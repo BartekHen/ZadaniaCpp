@@ -1,0 +1,77 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+#include<cmath>
+using namespace std;
+struct punkt{
+    double x,y;
+};
+
+double ObliczPoleTrojkata( punkt A,  punkt B,  punkt C) {
+    return 0.5 * abs(A.x * (B.y - C.y) + B.x * (C.y - A.y) + C.x * (A.y - B.y));
+};
+
+bool CzyPunktyNaProstej( punkt A,  punkt B, punkt C) {
+    return abs(A.x * (B.y - C.y) + B.x * (C.y - A.y) + C.x * (A.y - B.y)) <1e-9;
+    
+};
+
+
+int main() {
+  punkt A,B,C;
+
+  
+  
+  cout<<"Podaj x i y dla punktu A(x,y) "<<endl;
+  cin>>A.x>>A.y;
+  
+  cout<<"Podaj x i y dla punktu B(x,y) "<<endl;
+  cin>>B.x>>B.y;
+  
+  cout<<"Podaj x i y dla punktu C(x,y) "<<endl;
+  cin>>C.x>>C.y;
+  
+   while (true) {
+        std::cout << "Menu:\n";
+        std::cout << "1. Podaj nowe punkty A, B, C\n";
+        std::cout << "2. Sprawdz czy punkty leza na jednej prostej\n";
+        if (!CzyPunktyNaProstej(A, B, C)) {
+            cout << "3. Oblicz pole trojkata\n";
+        }
+        std::cout << "4. Zakoncz program\n";
+        std::cout << "Wybierz opcje: ";
+          int wybor;
+        cin>>wybor;
+        
+        if (wybor==1){
+             cout<<"Podaj x i y dla punktu A(x,y) "<<endl;
+            cin>>A.x>>A.y;
+  
+            cout<<"Podaj x i y dla punktu B(x,y) "<<endl;
+            cin>>B.x>>B.y;
+  
+            cout<<"Podaj x i y dla punktu C(x,y) "<<endl;
+            cin>>C.x>>C.y;
+        }else if(wybor==2){
+            if (CzyPunktyNaProstej( A,B,C)){
+                cout<<"Leży na prostej";
+            }else{
+                cout<<"Nie lezy na prostej";
+            }
+        }else if(wybor==3){
+            cout<<ObliczPoleTrojkata(A,B,C);
+        }else if(wybor==4){
+           break;
+        }else{
+            cout<<"Nieprawidlowy wybor";
+        }
+        }
+       
+        
+        
+        
+        return 0;
+        
+        
+        
+   }
+    
