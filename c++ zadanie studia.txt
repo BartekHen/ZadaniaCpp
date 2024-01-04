@@ -1,0 +1,87 @@
+
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+void randomize(int tablica[]);
+void userRandom(int table[]);
+int HowMuch(int tablicaPC[],int tablicaUser[]);
+int HowMany(int tablicaPC[],int tablicaUser[]);
+int main() {
+   
+    int haslo[4];
+    randomize(haslo);
+    int licznik=0;
+   while(true) {
+    int User[4];
+    userRandom(User);
+    licznik+=1;
+    cout<<endl;
+   cout<<HowMuch(haslo,User)<<endl;
+     cout<<HowMany(haslo,User)<<endl;
+        
+if (HowMuch(haslo,User)==4){
+    cout<<"Wygrales, tyle bylo prob"<<endl;
+    cout<<licznik;
+    break;
+    
+}
+}    
+return 0;
+}
+
+void randomize(int tablica[]){
+       srand(time(NULL));
+    
+    for (int i=0;i<4;i++){
+        tablica[i]=rand()%10;
+    }
+    
+     for (int i=0;i<4;i++){
+       cout<<tablica[i];
+    }
+     cout<<endl;
+    
+}
+void userRandom(int table[]){
+    int n;
+    cout<<"Podaj po enterze liczby w szyfrze"<<endl;
+    for(int i=0;i<4;i++){
+        cin>>n;
+        table[i]=n;
+    }
+     for (int i=0;i<4;i++){
+       cout<<table[i];
+    }
+}
+
+int HowMuch(int tablicaPC[],int tablicaUser[]){
+    int counter=0;
+    for(int i=0;i<4;i++){
+        if(tablicaPC[i]==tablicaUser[i]){
+            counter+=1;
+        }
+    }
+    return counter;
+    
+}
+
+int HowMany(int tablicaPC[],int tablicaUser[]){
+    int counter = 0;
+    
+    for(int i=0;i<4;i++){
+        for(int j=0;j<4;j++){
+            if(i==j){
+                continue;
+            }else if(tablicaPC[i]==tablicaUser[j]){
+                counter+=1;
+            }
+        }
+    }
+    return counter;
+    
+
+    
+    
+}
